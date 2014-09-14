@@ -1,0 +1,43 @@
+##
+# MageGo config file
+# https://github.com/robinwl/magego
+##
+
+##
+# PHP version
+# Description: What PHP version to use. This controls if the wheezy64 or squeeze64 box will be used.
+# Magento < 1.9 needs manual patching to work with PHP 5.4.  
+# Values: 5.3 or 5.4
+##
+$php_version = "5.4"
+
+##
+# Sample data
+# Description: Install Magento sample data. This will clear database and files in public/. Only use at first boot! 
+# Values: true or false
+##
+$sample_data = false
+
+##
+# Address to APT cacher
+# Description: 
+# Values: false or "IP:PORT" eg. "192.168.98.1:3142"
+# Notes: Not implemented yet!
+##
+$apt_cacher = false
+
+##
+# Percona Server
+# Description: Use Percona Server instead of Oracle MySQL Server
+# Values: true or false
+# Notes: Not implemented yet!
+##
+$percona_enable = false
+
+##
+# Local provisioner
+# Description: Use local copy of provisioner for development. Use remote to allways get use latest provisioner. 
+# Values: true or false
+# Notes: Not implemented yet!
+##
+$use_local_provisioner = false
