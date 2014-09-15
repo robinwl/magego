@@ -12,6 +12,9 @@
 [gulp.js]: http://gulpjs.com/
 [Grunt]: http://gruntjs.com/
 [npm]: https://www.npmjs.org/
+[composer]: https://getcomposer.org/
+[n98-magerun]: http://magerun.net/
+[modman]: https://github.com/colinmollenhour/modman
 
 # MageGo
 
@@ -63,6 +66,11 @@ vagrant up
 vagrant ssh
 ```
 
+6) Setup composer (run inside box after 'vagrant ssh')
+```
+composer up
+```
+
 ## Magento 1.9 with demo data setup
 ```
 git clone https://github.com/robinwl/magego.git
@@ -84,3 +92,6 @@ vagrant up
 * [mailcatcher]
 * [Ruby] 1.9
 * [Magento] 1.9 or from source
+* [composer]
+* [n98-magerun]
+* [modman]

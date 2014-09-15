@@ -43,11 +43,27 @@ if [ ! -d /vagrant/public ]
         mkdir -p /vagrant/public
         chown vagrant:vagrant /vagrant/public
 fi
+if [ ! -d /vagrant/db ]
+    then
+        mkdir -p /vagrant/db
+        chown vagrant:vagrant /vagrant/db
+fi
 
 # Update package mirrors and update base system
 apt-get update
 apt-get -y dist-upgrade
 
+# Enter /vagrant directory when accessing ssh
+if ! grep -Fxq "cd /vagrant" /home/vagrant/.bashrc
+    then
+        echo "cd /vagrant" >> /home/vagrant/.bashrc
+fi
+
+# Add composer binarys to PATH
+if ! grep -Fxq 'PATH="/vagrant/vendor/bin:$PATH"' /home/vagrant/.profile
+    then
+        echo 'PATH="/vagrant/vendor/bin:$PATH"' >> /home/vagrant/.profile
+fi
 
 # Set upp mirrors
 if [ $VERSION == "7" ] 
@@ -355,6 +371,18 @@ if [ $SAMPLE_DATA == true ]
         echo "Username: magego"
         echo "Password: magego123"
 fi
+
+# Install/update composer
+cd /usr/local/bin && curl -sS https://getcomposer.org/installer | php
+if [ ! -L /usr/local/bin/composer ]
+    then
+        cd /usr/local/bin && ln -s composer.phar composer
+fi
+chmod a+x /usr/local/bin/composer.phar
+
+# Install/update modman
+wget -q -O /usr/local/bin/modman https://raw.github.com/colinmollenhour/modman/master/modman
+chmod a+x /usr/local/bin/modman
 
 # Start mailcatcher
 mailcatcher --ip 0.0.0.0
